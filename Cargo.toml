@@ -1,0 +1,13 @@
+[package]
+name = "hackdose-sml-parser"
+version = "0.1.0"
+edition = "2021"
+authors = ["Philipp Vollmer"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/torfmaster/hackdose-sml-parser"
+description = "a parser for the smart message language spoken by smart meters"
+
+[dependencies]
+byteorder = "1.4.3"
+peg = { version = "0.8.1" }
