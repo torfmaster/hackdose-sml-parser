@@ -47,8 +47,8 @@ the whole 80 page [specification](https://www.bsi.bund.de/SharedDocs/Downloads/D
 
 # Contributions
 
-Any contributions are highly appreciated. I published this library (which is part of the yet-to-be-published
-`hackdose` project) to save everyone the work to implement yet another parser for this hard-to-read binary protocol
+Any contributions are highly appreciated. I published this library (which is part of the
+[hackdose](https://github.com/torfmaster/hackdose-server)) to save everyone the work to implement yet another parser for this hard-to-read binary protocol
 and to focus on more interesting tasks.
 
 # License
