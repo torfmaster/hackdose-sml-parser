@@ -1,9 +1,10 @@
 // cf. https://www.promotic.eu/en/pmdoc/Subsystems/Comm/PmDrivers/IEC62056_OBIS.htm
+use enum_iterator::all;
 
 macro_rules! generate_obis {
 
      ($( ($x:ident, $y:expr, $l:literal) ),*) => {
-        #[derive(serde::Serialize, serde::Deserialize)]
+        #[derive(serde::Serialize, serde::Deserialize, enum_iterator::Sequence)]
         #[non_exhaustive]
         pub enum Obis {
              $(
@@ -19,6 +20,11 @@ macro_rules! generate_obis {
                         Self:: $x => $y,
                     )*
                  }
+             }
+
+             /// Find matching Obis number from six-digit number
+             pub fn from_number(number: &[u8]) -> Option<Self> {
+                all::<Obis>().find(|x| x.obis_number()==number)
              }
          }
     };
