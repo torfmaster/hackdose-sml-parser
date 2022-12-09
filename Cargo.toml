@@ -1,6 +1,6 @@
 [package]
 name = "hackdose-sml-parser"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 authors = ["Philipp Vollmer"]
 license = "MIT OR Apache-2.0"
@@ -11,3 +11,4 @@ description = "a parser for the smart message language spoken by smart meters"
 [dependencies]
 byteorder = "1.4.3"
 peg = { version = "0.8.1" }
+serde = { version="1.0.149", features=["derive"] }

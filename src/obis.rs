@@ -3,6 +3,7 @@
 macro_rules! generate_obis {
 
      ($( ($x:ident, $y:expr, $l:literal) ),*) => {
+        #[derive(serde::Serialize, serde::Deserialize)]
         #[non_exhaustive]
         pub enum Obis {
              $(
