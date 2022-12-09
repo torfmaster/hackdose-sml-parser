@@ -4,7 +4,7 @@ use enum_iterator::all;
 macro_rules! generate_obis {
 
      ($( ($x:ident, $y:expr, $l:literal) ),*) => {
-        #[derive(serde::Serialize, serde::Deserialize, enum_iterator::Sequence)]
+        #[derive(serde::Serialize, serde::Deserialize, enum_iterator::Sequence, Eq, PartialEq, Hash)]
         #[non_exhaustive]
         pub enum Obis {
              $(
