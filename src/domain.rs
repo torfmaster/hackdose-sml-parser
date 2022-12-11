@@ -1,3 +1,5 @@
+use serde::Serialize;
+
 #[derive(PartialEq, Debug)]
 pub struct SmlMessages {
     pub messages: Vec<SmlMessageEnvelope>,
@@ -33,7 +35,7 @@ pub struct SmlListEntry {
     pub value: AnyValue,
 }
 
-#[derive(PartialEq, Debug, Clone)]
+#[derive(PartialEq, Debug, Clone, Serialize)]
 pub enum AnyValue {
     Unsigned(usize),
     Signed(isize),
