@@ -41,3 +41,24 @@ pub enum AnyValue {
     Signed(isize),
     String(Vec<u8>),
 }
+
+/// Scale an SML value by the given scaler (base 10)
+pub trait Scale {
+    fn scale(&self, scaler: i8) -> Self;
+}
+
+impl Scale for AnyValue {
+    fn scale(&self, scaler: i8) -> Self {
+        match self {
+            AnyValue::Unsigned(v) => {
+                let scaler = scaler;
+                AnyValue::Unsigned((10f64.powf(scaler as f64) * *v as f64) as usize)
+            }
+            AnyValue::Signed(v) => {
+                let scaler = scaler;
+                AnyValue::Signed((10f64.powf(scaler as f64) * *v as f64) as isize)
+            }
+            AnyValue::String(v) => AnyValue::String(v.clone()),
+        }
+    }
+}

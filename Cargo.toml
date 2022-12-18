@@ -1,6 +1,6 @@
 [package]
 name = "hackdose-sml-parser"
-version = "0.4.3"
+version = "0.5.0"
 edition = "2021"
 authors = ["Philipp Vollmer"]
 license = "MIT OR Apache-2.0"
@@ -13,3 +13,5 @@ byteorder = "1.4.3"
 enum-iterator = "1.2.0"
 peg = { version = "0.8.1" }
 serde = { version="1.0.149", features=["derive"] }
+tokio = { version="1.23.0", features=["sync", "io-util", "rt"] }
+tokio-stream = { version="0.1.11", features=["sync"] }
