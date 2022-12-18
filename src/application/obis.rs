@@ -1,6 +1,19 @@
+use std::collections::HashMap;
+
 // cf. https://www.promotic.eu/en/pmdoc/Subsystems/Comm/PmDrivers/IEC62056_OBIS.htm
 use enum_iterator::all;
+use lazy_static::lazy_static;
 
+// HashMap<[u8;6], Obis>
+lazy_static! {
+    static ref SOURCE: HashMap<&'static [u8], Obis> = {
+        let mut a = HashMap::new();
+        for obis in all::<Obis>() {
+            a.insert(obis.clone().obis_number(), obis);
+        }
+        a
+    };
+}
 macro_rules! generate_obis {
 
      ($( ($x:ident, $y:expr, $l:literal) ),*) => {
@@ -14,7 +27,7 @@ macro_rules! generate_obis {
          }
 
         impl Obis {
-             pub fn obis_number(&self) -> &[u8] {
+             pub fn obis_number(&self) -> &'static [u8] {
                  match self {
                     $(
                         Self:: $x => $y,
@@ -24,7 +37,7 @@ macro_rules! generate_obis {
 
              /// Find matching Obis number from six-digit number
              pub fn from_number(number: &[u8]) -> Option<Self> {
-                all::<Obis>().find(|x| x.obis_number()==number)
+                SOURCE.get(number).map(|x| x.clone())
              }
          }
     };
