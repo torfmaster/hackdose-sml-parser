@@ -1,3 +1,5 @@
+This repo has been archived: The place for development is now [here](https://github.com/torfmaster/hackdose).
+
 # Hackdose SML-parser
 
 A parser for SML messages as emitted by ISKRA(tm) smart meters for instance.
